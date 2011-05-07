@@ -20,9 +20,14 @@ sub storeDocuments {
   
   for my $document (@{$documents}) {
     my $xml = createDocument($document);
-    sendToSolR($xml);
-    sendToSolR('<commit></commit>');
+    eval {
+      sendToSolR($xml);
+    };
+    if ($@) {
+      print "Fallo indexando: ".$document->{'url'}.": $!\n";
+    }
   }
+  sendToSolR('<commit></commit>');
   print 'Done!';
 }
 
@@ -37,7 +42,7 @@ sub sendToSolR {
 		print "Indexed!\n";
 	}
 	else {
-		print "ERROR: " . $response->as_string . "\n";
+	  die "Error found: ".$response->as_string."\n";
 	}
 	return $response;
 }
