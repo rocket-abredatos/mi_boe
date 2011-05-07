@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MiBoeWeb</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+  <head>
+    <title>MiBoeWeb</title>
+    <%= stylesheet_link_tag :all %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
 
-<%= yield %>
-
-</body>
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-23191720-1']);
+      _gaq.push(['_setDomainName', '.miboe.es']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    
+    </script>
+  </head>
+  <body>
+    <div id='wrapper'>
+      <%= yield %>
+      <div id='footer'>
+        <%= link_to t('fork_us'), "https://github.com/rocket-abredatos/mi_boe" %> - 
+        <%= link_to t('follow_us'), "http://twitter.com/#!/mi_boe" %> - 
+        <%= link_to t('abredatos_challenge'), "http://www.abredatos.es" %>
+      </div>
+    </div>
+  </body>
 </html>

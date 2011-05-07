@@ -10,10 +10,9 @@
       </ul>
     </div>
   <% end %>
-  <br/>
-  <br/>
+
   <div class="field">
-    <%= f.text_field :query %>
+    <%= f.text_field :query, :value => (@search.responseHeader.present? ? @search.responseHeader.params.q : nil) %>
   </div>
   <div class="actions">
     <%= f.submit %>

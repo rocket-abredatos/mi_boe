@@ -1,10 +1,47 @@
-<p id="notice"><%= notice %></p>
+<%debugger%>
 
-<p>
-  <b>Query:</b>
-  <%= @search.query %>
-</p>
+<div id='nav'>
+  <div>
+    <%= image_tag("logo.png") %>
+  </div>
+  <div>
+    <%= parse_facet_fields('seccion', 'section').html_safe %>
+    <%= parse_facet_fields('organo', 'organ').html_safe %>
+    <%= parse_facet_fields('rango', 'rank').html_safe %>
+  </div>
+</div>
+
+<div id='main'>
+  <%= render 'searches/form' %>
+  <p class='results'>
+    <%= t('results_count_1') + (@search.response.start + 1).to_s + t('results_count_2') + (@search.response.numFound < Search::DOCS_PER_QUERY ? @search.response.numFound : (@search.response.start + Search::DOCS_PER_QUERY)).to_s + t('results_count_3') + @search.response.numFound.to_s %>
+  </p>
+
+  <table>
+    <thead>
+      <tr class='tableHeading'>
+        <th><%= t('title') %></th>
+        <th><%= t('code') %></th>
+        <th><%= t('organ') %></th>
+        <th><%= t('section') %></th>
+        <th><%= t('date') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @search.response.docs.each_with_index do |doc,i| %>
+        <tr class='<%= ((i % 2) == 0) ? 'odd' : '' %>'>
+          <td class='originalDocument' ><%= link_to doc.titulo[0,30] + '...', doc.url %></td>
+          <td class='originalDocument' ><%= doc.codigo %></td>
+          <td class='originalDocument' ><%= doc.organo %></td>
+          <td class='originalDocument' ><%= doc.seccion %></td>
+          <td class='originalDocument' ><%= doc.fecha %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      
+    </tfoot>
+  </table>
+</div>
 
 
-<%= link_to 'Edit', edit_search_path(@search) %> |
-<%= link_to 'Back', searches_path %>

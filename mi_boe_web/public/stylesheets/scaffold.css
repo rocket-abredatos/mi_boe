@@ -2,7 +2,7 @@ body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
+  font-size:   12px;
   line-height: 18px;
 }
 
@@ -66,10 +66,99 @@ div#wrapper {
   border: 0px;
 }
 
+div#wrapper.displayResults {
+  margin-top:10px;
+}
+
+div#main {
+  padding-top:30px;
+  border-left:solid 1px #ccc;
+}
+
 div#header {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+div#main {
+  margin-top: 1px;
+  margin-left: 14%;
+  padding-bottom: 0px;
+  padding-left: 30px;
+  padding-right: 0px;
+  padding-top: 0px;
+}
+
+div#nav {
+  width: 13%;
+  padding: 0px;
+  margin-top: 1px;
+  float: left;
+}
+
+div#nav a {
+  color:#606060;
+  visited: #606060;
+  hover :#606060;
+  active :#606060;
+  font-size: 10px;
+}
+
+div#nav h3 {
+  background: #0D4B87;
+  color:#FFFFFF;
+  visited: #FFFFFF;
+  hover :#FFFFFF;
+  active :#FFFFFF;
+  font-size: 10px;
+}
+
+div#nav h3 a {
+  color:#FFFFFF;
+  visited: #FFFFFF;
+  hover :#FFFFFF;
+  active :#FFFFFF;
+}
+
+p.results {
+  font: 10px arial;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  position: center;
+}
+
+table {
+  width: 100%;
+  font: 12px/ 14px arial, sans-serif;
+  color: #666;
+  margin: 10px 0;
+}
+
+td,th {
+  border-bottom: 0px solid #ddd;
+  border-right: 0px solid #ddd;
+  padding: 5px 8px 3px 8px;
+  vertical-align: center;
+  text-align: center;
+}
+
+.tableHeading th,.tableHeading td {
+  background: #0D4B87;
+  border: 0px;
+  color: #FFFFFF;
+}
+
+th.first {
+  border-left: 0px solid #C6D2DA;
+}
+
+td {
+  background: #E8E8E8 ;
+  border: 0px;
+}
+
+.odd td {
+  background: #FFFFFF;
 }
 
 div#footer {
