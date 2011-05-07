@@ -7,14 +7,23 @@ use DBI;
 use URI;
 use LWP::UserAgent;
 use HTTP::Request::Common;
-
-
+use HTTP::Lite;
+use BOEScraper;
+use Digest::MD5 qw(md5 md5_hex md5_base64);
 
 my $solrURL = 'http://mcdemo01:8090/solr/update?';
 
-my $xml = createMockupDocument();
-sendToSolR('<delete><query>*:*</query></delete>');
-#sendToSolR($xml);
+my $url = 'http://www.boe.es/diario_boe/txt.php?id=BOE-A-2011-8016';
+my $date = '2011-05-07T00:00:00Z';
+
+my $html = BOEScraper::getContenido($url);
+$html = BOEScraper::cleanString($html);
+my $document = BOEScraper::parseHTML($html);
+
+
+my $xml = createDocument($document);
+#sendToSolR('<delete><query>*:*</query></delete>');
+sendToSolR($xml);
 sendToSolR('<commit></commit>');
 
 sub sendToSolR {
@@ -34,16 +43,31 @@ sub sendToSolR {
 }
 
 # Crea el XML listo para enviar a SolR de un documento del BOE
+sub createDocument {
+	# Hash con el contenido de cada campo
+	my $document = shift @_;
+	my $message = "<add>\n<doc>\n";
+
+	my @fields = keys( %{$document} );
+
+	foreach my $field (@fields) {
+		$message .= "<field name=\"" . $field . "\"><![CDATA[" . $document->{$field} . "]]></field>\n";
+	}
+	$message .= "</doc>\n</add>\n";
+	return $message;
+}
+
+# Crea el XML listo para enviar a SolR de un documento del BOE
 sub createMockupDocument {
 	# Hash con el contenido de cada campo
 	my $document;
 	
 	# Aqui crear el documento
-	$document->{'id'} = 'untextodemed5deberiatenerunapintarara';
+	$document->{'id'} = 'untextodemed5deberiatenerunapintarara2';
 	$document->{'url'} = 'http://boe.es/boe/dias/2011/05/07/pdfs/BOE-A-2011-8015.pdf';
-	$document->{'seccion'} = 'Disposiciones generales';
+	$document->{'seccion'} = 'Disposiciones no generales';
 	$document->{'organo'} = 'Ministerio de la Presidencia';
-	$document->{'rango'} = 'Real Decreto';
+	$document->{'rango'} = 'Irreal Decreto';
 	$document->{'titulo'} = 'Real Decreto 558/2011, de 20 de abril, por el que se complementa el Catálogo Nacional de Cualificaciones Profesionales, mediante el establecimiento de dos cualificaciones profesionales correspondientes a la familia profesional administración y gestión';
 	$document->{'codigo'} = 'BOE-A-2011-8015';
 	$document->{'paginaInicial'} = '45358';
