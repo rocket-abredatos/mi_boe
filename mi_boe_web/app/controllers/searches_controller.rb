@@ -40,17 +40,12 @@ class SearchesController < ApplicationController
   # POST /searches
   # POST /searches.xml
   def create
+    query = SolrAPI::Query.find(:one, :from => SolrAPI::Query.prefix, :params => {:q => params[:search][:query], :wt => 'json'})
+    @search = Search.new(query.attributes)
 debugger
-    @search = Search.new(params[:search])
-
     respond_to do |format|
-      if @search.save
-        format.html { redirect_to(@search, :notice => 'Search was successfully created.') }
-        format.xml  { render :xml => @search, :status => :created, :location => @search }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @search.errors, :status => :unprocessable_entity }
-      end
+      format.html { redirect_to(@search, :notice => 'Search was successfully created.') }
+      format.xml  { render :xml => @search, :status => :created, :location => @search }
     end
   end
 

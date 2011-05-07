@@ -54,3 +54,31 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+div#wrapper {
+  width: 90%;
+  background-color: #FFFFFF;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px;
+  border: 0px;
+}
+
+div#header {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div#footer {
+  padding: 15px;
+  border-top: 0px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 9.5px;
+  color: #606060 ;
+  margin-top: 100px;
+}
