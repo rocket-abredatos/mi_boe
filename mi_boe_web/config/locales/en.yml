@@ -2,7 +2,24 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  abredatos_challenge: "AbreDatos Challenge 2011"
+  code: "Code"
+  date: "Date"
+  first_page: "First Page"
+  follow_us: "Follow us on Twitter"      
+  fork_us: "Fork us on GitHub"
   helpers:
     submit:
       search:
         create: "Search"
+  last_page: "Last Page"
+  organ: "Organ"
+  pages: "Pages"
+  rank: "Rank"
+  results_count_1: "Showing documents from "
+  results_count_2: " to "
+  results_count_3: " out of "
+  section: "Section"
+  text: "Text"
+  title: "Title"
+  url: "URL"
