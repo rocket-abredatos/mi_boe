@@ -22,7 +22,15 @@ sub parseHTML {
 	my $html = shift @_;	
 	my $document;
 	if ($html =~ m/<div id=\"DOdoc\">.*?<h3>(.*?)<\/h3>/ism) {
-		$document->{'seccion'} = $1;
+		my $seccion = $1;
+		if ($seccion =~ m/<span>(.*?)<\/span>/ism) {
+			$seccion = $1;
+		}
+		if ($seccion =~ m/\./) {
+			my $dotIndex = index($seccion,'.');
+			$seccion = substr($seccion,$dotIndex + 2);
+		}
+		$document->{'seccion'} = $seccion;
 	} 
 	if ($html =~ m/<div id=\"DOdoc\">.*?<h4>(.*?)<\/h4>/ism) {
 		$document->{'organo'} = $1;
