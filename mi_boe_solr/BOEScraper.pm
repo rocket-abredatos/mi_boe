@@ -1,3 +1,5 @@
+#!/usr/bin/env perl
+
 package BOEScraper;
 use strict;
 use Carp;
@@ -9,6 +11,11 @@ use Encode;
 use Encode::Encoding;
 use Encode::Guess;
 use HTML::Encoding;
+ use Digest::MD5 qw(md5);
+
+# Constants used to build URLs
+my $boe_base_url = 'http://boe.es';
+my $dias_base_url = $boe_base_url.'/boe/dias';
 
 # Parsea el HTML y devuelve un hash con los campos del SolR
 sub parseHTML {
@@ -94,6 +101,43 @@ sub cleanString {
 	$string =~ s/&#x80;/€/gsm;# 	Euro
 	$string =~ s/&#x20A7;/₧/gsm;# 	Peseta
 	return $string;
+}
+
+# Gets the URLs of the day articles
+sub getUrls {
+  my $html = shift @_;
+  my $urls = ();
+  
+  # We search the document for links to articles
+  while ($html =~ m/<a href=\"(\/diario_boe\/txt.php\?id=.*?)\" title=\"Versi.*? HTML .*?\">Otros formatos<\/a>/ig) {
+    my $url = $boe_base_url.$1;
+    push(@{$urls}, $url);
+  }
+  return $urls;
+}
+
+# Returns an array with all the articles of the day
+sub getBOEOfTheDay {
+  my $day = shift @_;
+  my $month = shift @_;
+  my $year = shift @_;
+  
+  my $fecha = $year.'-'.$month.'-'.$day.'T00:00:00Z';
+  # We build the day's URL
+  my $url = $dias_base_url.'/'.$year.'/'.$month.'/'.$day.'/';
+  my $html = getContenido($url);
+  my $urls = getUrls($html);
+  
+  # We download each article
+  my $documents = ();
+  for my $url_art (@{$urls}) {
+    my $html_article = getContenido($url_art);
+    my $document = parseHTML($html_article);
+    $document->{'fecha'} = $fecha;
+    $document->{'id'} = md5($url_art);
+    push(@{$documents}, $document);
+  }
+  return $documents;
 }
 
 1;
