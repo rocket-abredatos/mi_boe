@@ -51,9 +51,10 @@
  	<fields>
 		<field name="id" type="string" indexed="true" stored="true" required="true" />
    		<field name="url" type="string" indexed="true" stored="true" required="true" />
+   		<field name="urlPDF" type="string" indexed="true" stored="true" required="true" />
    		<field name="seccion" type="string" indexed="true" stored="true" required="true" />
    		<field name="organo" type="string" indexed="true" stored="true" required="true" />
-   		<field name="rango" type="string" indexed="true" stored="true" required="true" />
+   		<field name="rango" type="string" indexed="true" stored="true" required="false" />
    		<field name="titulo" type="text" indexed="true" stored="true" required="true"/>
    		<field name="codigo" type="text" indexed="true" stored="true" required="true"/>
    		<field name="paginaInicial" type="int" indexed="true" stored="true" />

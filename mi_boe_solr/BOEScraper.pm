@@ -11,7 +11,7 @@ use Encode;
 use Encode::Encoding;
 use Encode::Guess;
 use HTML::Encoding;
- use Digest::MD5 qw(md5);
+ use Digest::MD5 qw(md5_hex);
 
 # Constants used to build URLs
 my $boe_base_url = 'http://boe.es';
@@ -30,6 +30,10 @@ sub parseHTML {
 	if ($html =~ m/<div class=\"enlacesDoc\" id=\"barraSep\">.*?<p class=\"documento-tit\">(.*?)<\/p>/ism) {
 		$document->{'titulo'} = $1;
 	} 
+	
+	if ($html =~ m/<li class=\"puntoPDF\">.*?href="(.*?)\"/ism) {
+		$document->{'urlPDF'} = 'http://boe.es'. $1;
+	}
 	
 	if ($html =~ m/<ul>.*?<li>.*?<span class="etiqDoc">Rango: <\/span>(.*?)<\/li>/ism) {
 		$document->{'rango'} = $1;
@@ -132,9 +136,11 @@ sub getBOEOfTheDay {
   my $documents = ();
   for my $url_art (@{$urls}) {
     my $html_article = getContenido($url_art);
+	$html_article = cleanString($html_article);
     my $document = parseHTML($html_article);
     $document->{'fecha'} = $fecha;
-    $document->{'id'} = md5($url_art);
+    $document->{'id'} = md5_hex($url_art);
+    $document->{'url'} = $url_art;
     push(@{$documents}, $document);
   }
   return $documents;

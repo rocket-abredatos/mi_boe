@@ -114,6 +114,7 @@
 		<str name="qf">texto^1 titulo^10.0</str>
 		<!-- Highlight -->
 		<str name="hl">on</str>
+		<str name="mm">1</str>
 		<str name="hl.fl">texto titulo</str>
 		<str name="f.name.hl.fragsize">0</str>
 
