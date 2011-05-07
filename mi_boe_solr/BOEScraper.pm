@@ -139,7 +139,7 @@ sub getBOEOfTheDay {
 	$html_article = cleanString($html_article);
     my $document = parseHTML($html_article);
     $document->{'fecha'} = $fecha;
-    $document->{'id'} = md5_hex($url_art);
+    $document->{'id'} = 'A'.md5_hex($url_art);
     $document->{'url'} = $url_art;
     push(@{$documents}, $document);
   }
