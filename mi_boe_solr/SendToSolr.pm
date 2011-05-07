@@ -15,6 +15,17 @@ use Digest::MD5 qw(md5 md5_hex md5_base64);
 
 my $solrURL = 'http://mcdemo01:8090/solr/update?';
 
+sub storeDocuments {
+  my $documents = shift @_;
+  
+  for my $document (@{$documents}) {
+    my $xml = createDocument($document);
+    sendToSolR($xml);
+    sendToSolR('<commit></commit>');
+  }
+  print 'Done!';
+}
+
 sub sendToSolR {
 	my $message = shift @_;
 	my $response;
@@ -45,3 +56,5 @@ sub createDocument {
 	$message .= "</doc>\n</add>\n";
 	return $message;
 }
+
+1;
