@@ -116,7 +116,7 @@
 		<!-- Highlight -->
 		<str name="hl">on</str>
 		<str name="mm">1</str>
-		<str name="hl.fl">texto titulo</str>
+		<str name="hl.fl">titulo</str>
 		<str name="f.name.hl.fragsize">0</str>
 
 		<!-- Facetado por defecto -->
