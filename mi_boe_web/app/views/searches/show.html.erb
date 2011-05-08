@@ -12,7 +12,11 @@
 <div id='main'>
   <%= render 'searches/form' %>
   <p class='results'>
-    <%= t('results_count_1') + (@search.response.start + 1).to_s + t('results_count_2') + (@search.response.numFound < Search::DOCS_PER_QUERY ? @search.response.numFound : (@search.response.start + Search::DOCS_PER_QUERY)).to_s + t('results_count_3') + @search.response.numFound.to_s %>
+    <% if @search.response.numFound > 0 %>
+      <%= t('results_count_1') + (@search.response.start + 1).to_s + t('results_count_2') + (@search.response.numFound < Search::DOCS_PER_QUERY ? @search.response.numFound : (@search.response.start + Search::DOCS_PER_QUERY)).to_s + t('results_count_3') + @search.response.numFound.to_s %>
+    <% else %>
+      <%= t('no_results') %>
+    <% end %>
   </p>
   <br />
   <br />
@@ -21,44 +25,57 @@
     <div id="search">
       <div id="ires">
         <ol id="rso">
-        <% @search.response.docs.each_with_index do |doc,i| %>
-          <li class="g w0 knavi">
-            <div class="vsc">
-              <div class="vspi">
-              </div>
-              <span class="tl">
-                <h3 class="r">
-                  <%= link_to(doc.titulo, doc.url, :class=>"l") %>
-                </h3>
-              </span>
-              <div class="s">
-                <%= strip_tags(doc.textoSnippet) %>...
-                <br />
-                <span class="f">
-                  <span class="mft">
-                    Fecha: 
-                  </span>
-                  <%= doc.fecha.strftime('%d-%m-%Y') %>
-                  <span class="mft">
-                    Órgano: 
-                  </span>
-                  <%= doc.organo %>
-                   - 
-                  <span class="mft">
-                    Sección: 
-                  </span>
-                  <%= doc.seccion %>
-                   - 
-                  <%= link_to (image_tag("application_xml.png", :align=>"absmiddle", :width=>"24px", :height=>"24px", :border=>"0")), doc.url %>
-                  <%= link_to (image_tag("application_pdf.png", :align=>"absmiddle", :width=>"24px", :height=>"24px", :border=>"0")), doc.urlPDF %>
+          <% @search.response.docs.each_with_index do |doc,i| %>
+            <li class="g w0 knavi">
+              <div class="vsc">
+                <div class="vspi">
+                </div>
+                <span class="tl">
+                  <h3 class="r">
+                    <%= link_to(doc.titulo, doc.url, :class=>"l") %>
+                  </h3>
                 </span>
+                <div class="s">
+                  <%= strip_tags(doc.textoSnippet) %>...
+                  <br />
+                  <span class="f">
+                    <span class="mft">
+                      Fecha: 
+                    </span>
+                    <%= doc.fecha.strftime('%d-%m-%Y') %>
+                    <span class="mft">
+                      Órgano: 
+                    </span>
+                    <%= doc.organo %>
+                     - 
+                    <span class="mft">
+                      Sección: 
+                    </span>
+                    <%= doc.seccion %>
+                     - 
+                    <%= link_to (image_tag("application_xml.png", :align=>"absmiddle", :width=>"24px", :height=>"24px", :border=>"0")), doc.url %>
+                    <%= link_to (image_tag("application_pdf.png", :align=>"absmiddle", :width=>"24px", :height=>"24px", :border=>"0")), doc.urlPDF %>
+                  </span>
+                </div>
               </div>
-            </div>
-          </li>
-        <% end %>
+            </li>
+          <% end %>
         </ol>
       </div>
     </div>
+  </div>
+  <div id='pagination'>
+    <p>
+      <% if @search.response.numFound > 0 %>
+        <% for i in 0..(@search.response.numFound / 10) %>
+          <% if i == @search.response.start %>
+            <%= (i + 1).to_s %>
+          <% else %>
+            <%= link_to (i + 1).to_s, {:action => "create", :search => {:query => @search.responseHeader.params.q, :start => (i * 10).to_s}}, {:method => 'post'} %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </p>
   </div>
 </div>
 

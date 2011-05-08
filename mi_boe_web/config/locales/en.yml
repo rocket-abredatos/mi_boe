@@ -17,6 +17,7 @@ en:
     content_2: "For registered users, we offer extra functionality. We allow them to define searches that will be run daily through the most recent BOE publication. If relevant results are found, it will alert the user by e-mail. This way, we hope that the user can avoid the daily task of searching in the BOE, through the official portal or the official subscription system, which are not very user-friendly."
     title: "How does it work?"
   last_page: "Last Page"
+  no_results: "No documents found"
   organ: "Organ"
   pages: "Pages"
   rank: "Rank"
