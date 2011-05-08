@@ -13,8 +13,8 @@ en:
       search:
         create: "Search"
   how_does_it_work:
-    content_1: "In Mi BOE any user can search in the documents of the Boletín Oficial del Estado. The results are returned ordered by their relevance according to the specified search terms. Furthermore, it offers categorical filtering to make navigation and information retrieval easier."
-    content_2: "For registered users, we offer extra functionality. We allow them to define searches that will be run daily through the most recent BOE publication. If relevant results are found, it will alert the user by e-mail. This way, we hope that the user can avoid the daily task of searching in the BOE, through the official portal or the official subscription system, which are not very user-friendly."
+    content_1: "Mi BOE offers easy free text search on BOE documents(from January 1st 2011 until present day). New BOE publications are automatically input into the system, allowing an always up to date experience. Documents are returned ordered by date, from most recent to oldest. And in case more than one document have the same date, the most relevant according to the user input will be brough up first."
+    content_2: "Registered users can also define searches that will be run daily through the new BOE publication. If relevant results are found, an alert will be sent by e-mail."
     title: "How does it work?"
   last_page: "Last Page"
   no_results: "No documents found"
@@ -29,8 +29,22 @@ en:
   title: "Title"
   url: "URL"
   what_is_it:
-    content: "Mi BOE is a proyect developed for the <a href='http://www.abredatos.es'>AbreDatos Challenge 2011</a>. Abredatos \"is a 48-hour contest that will take place on the 7th and 8th of May for the express development of technological services for the citizen, based on open data\". Our goal is to simplify the search of information in the BOE and to make this task as automatic as possible, apart from offering customized subscriptions to alerts for the content of the BOE."
+    content: "Mi BOE is a project developed for the <a href='http://www.abredatos.es/' target='_blank'>AbreDatos Challenge 2011</a>. Abredatos is a 48-hour contest that will take place on the 7th and 8th of May for the express development of technological services for the citizen, based on open data. Our goal is to simplify the search of information in the BOE and to make this task as automatic as possible, apart from offering customized subscriptions to alerts for the content of the BOE."
     title: "What is it?"
   who_are_we:
     title: "Who are we?"
-   
+  panel:
+    welcome: "Welcome to Mi BOE"
+    subtitle: "Bringing BOE closer to citizens"
+    short_about: ""
+    not_a_member: "Not a member yet? Sign Up!"
+    member_login: "Member Login"
+    register_message: "Not a member yet? Sign Up!"
+    username: "E-mail"
+    password: "Password"
+    password_confirmation: "Confirm password"
+    button_register: "Register"
+    remember_me: "Remember me"
+    hello_gues: "Hello Guest!"
+    open: "Login | Register"
+    close: "Close panel"
