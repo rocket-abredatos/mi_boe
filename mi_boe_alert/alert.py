@@ -29,7 +29,8 @@ def sendmail(result, mail):
 
 
 def querySolrHttp(kws, date):
-        query=solrurl + str(kws) + '+AND+fecha:['+ str(date) +'T00:00:00Z+TO+'+ str(date) +'T00:00:00Z]' + '&version=2.2&start=0&rows=50&indent=on&wt=python&fl=id,titulo,url,urlPDF'
+	date='2011-03-03'
+        query=solrurl + '"' + kws.replace(" ","+") + '"'  + '+AND+fecha:['+ str(date) +'T00:00:00Z+TO+'+ str(date) +'T00:00:00Z]' + '&version=2.2&start=0&rows=50&indent=on&wt=python&fl=id,titulo,url,urlPDF'
         o= urllib2.urlopen(query)
         r = eval(o.read())
         return r
@@ -64,6 +65,7 @@ while(user!=None):
     mensaje=""
 
     data = c.fetchone()
+    flagp=False
     while(data!=None):
     	kws = data[2]
     	date = getDate()
@@ -72,8 +74,10 @@ while(user!=None):
             print "ERROR"
     	else:
             mensaje=mensaje + "\n\n########################################\n\n" + createMail(result,kws)
+	    flagp=True
         data=c.fetchone()
 
-    sendmail(mensaje,mail)
+    if(flagp):
+	sendmail(mensaje,mail)
 
     user=users.fetchone()
