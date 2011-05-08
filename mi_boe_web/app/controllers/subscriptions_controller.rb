@@ -1,10 +1,12 @@
 class SubscriptionsController < ApplicationController
   before_filter :authenticate_user!
-
+  check_authorization
+  
   # GET /users/:user_id/subscriptions
   # GET /users/:user_id/subscriptions.xml
   def index
-    @subscriptions = Subscription.all
+    @subscriptions = Subscription.find_all_by_user_id(current_user.id)
+    authorize! :read, @subscriptions.first
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,21 +14,12 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  # GET /users/:user_id/subscriptions/:subscription_id
-  # GET /users/:user_id/subscriptions/:subscription_id.xml
-  def show
-    @subscription = Subscription.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @subscription }
-    end
-  end
-
   # GET /users/:user_id/subscriptions/new
   # GET /users/:user_id/subscriptions/new.xml
   def new
     @subscription = Subscription.new
+    @subscription.user = current_user
+    authorize! :new, @subscription
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,6 +30,7 @@ class SubscriptionsController < ApplicationController
   # GET /users/:user_id/subscriptions/:subscription_id/edit
   def edit
     @subscription = Subscription.find(params[:id])
+    authorize! :edit, @subscription
   end
 
   # POST /users/:user_id/subscriptions
@@ -44,10 +38,11 @@ class SubscriptionsController < ApplicationController
   def create
     @subscription = Subscription.new(params[:subscription])
     @subscription.user = current_user
+    authorize! :create, @subscription
 
     respond_to do |format|
       if @subscription.save
-        format.html { redirect_to(user_subscription_url(current_user,@subscription), :notice => 'Subscription was successfully created.') }
+        format.html { redirect_to(user_subscriptions_url(current_user), :notice => 'Subscription was successfully created.') }
         format.xml  { render :xml => @subscription, :status => :created, :location => @subscription }
       else
         format.html { render :action => "new" }
@@ -60,10 +55,11 @@ class SubscriptionsController < ApplicationController
   # PUT /users/:user_id/subscriptions/:subscription_id.xml
   def update
     @subscription = Subscription.find(params[:id])
+    authorize! :update, @subscription
 
     respond_to do |format|
       if @subscription.update_attributes(params[:subscription])
-        format.html { redirect_to(user_subscription_url(current_user,@subscription), :notice => 'Subscription was successfully updated.') }
+        format.html { redirect_to(user_subscriptions_url(current_user), :notice => 'Subscription was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -76,6 +72,7 @@ class SubscriptionsController < ApplicationController
   # DELETE /users/:user_id/subscriptions/:subscription_id.xml
   def destroy
     @subscription = Subscription.find(params[:id])
+    authorize! :destroy, @subscription
     @subscription.destroy
 
     respond_to do |format|
