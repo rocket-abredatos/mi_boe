@@ -1,6 +1,6 @@
 <div id='nav'>
   <div>
-    <%= image_tag("logo.png") %>
+    <%= link_to (image_tag("logo_cuadrado_miboe.png", :border=>"0")), root_url %>
   </div>
   <div>
     <%= parse_facet_fields('seccion', 'section').html_safe %>
@@ -14,7 +14,9 @@
   <p class='results'>
     <%= t('results_count_1') + (@search.response.start + 1).to_s + t('results_count_2') + (@search.response.numFound < Search::DOCS_PER_QUERY ? @search.response.numFound : (@search.response.start + Search::DOCS_PER_QUERY)).to_s + t('results_count_3') + @search.response.numFound.to_s %>
   </p>
-
+  <br />
+  <br />
+  <br />
   <div class="med" id="res" role="main">
     <div id="search">
       <div id="ires">
@@ -34,6 +36,10 @@
                 <br />
                 <span class="f">
                   <span class="mft">
+                    Fecha: 
+                  </span>
+                  <%= doc.fecha.strftime('%d-%m-%Y') %>
+                  <span class="mft">
                     Órgano: 
                   </span>
                   <%= doc.organo %>
@@ -43,8 +49,8 @@
                   </span>
                   <%= doc.seccion %>
                    - 
-                  <%= link_to (image_tag("application_xml.png", :align=>"absmiddle", :width=>"24px", :height=>"24px")), doc.url %>
-                  <%= link_to (image_tag("application_pdf.png", :align=>"absmiddle", :width=>"24px", :height=>"24px")), doc.urlPDF %>
+                  <%= link_to (image_tag("application_xml.png", :align=>"absmiddle", :width=>"24px", :height=>"24px", :border=>"0")), doc.url %>
+                  <%= link_to (image_tag("application_pdf.png", :align=>"absmiddle", :width=>"24px", :height=>"24px", :border=>"0")), doc.urlPDF %>
                 </span>
               </div>
             </div>
