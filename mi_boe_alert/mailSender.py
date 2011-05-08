@@ -6,7 +6,7 @@ import sys
 mail=sys.argv[1]
 texto=sys.argv[2]
 
-p = os.popen("%s -t -w" % SENDMAIL, "w")
+p = os.popen("%s -t -v -O ErrorMode=\"w\"" % SENDMAIL, "w")
 #p.write("To: alejandrogonzalezdiez@gmail.com\n")
 p.write("To: "+ mail + "\n")
 p.write("From: alertas@miboe.es\n")
