@@ -29,7 +29,6 @@ def sendmail(result, mail):
 
 
 def querySolrHttp(kws, date):
-	date='2011-03-03'
         query=solrurl + '"' + kws.replace(" ","+") + '"'  + '+AND+fecha:['+ str(date) +'T00:00:00Z+TO+'+ str(date) +'T00:00:00Z]' + '&version=2.2&start=0&rows=50&indent=on&wt=python&fl=id,titulo,url,urlPDF'
         o= urllib2.urlopen(query)
         r = eval(o.read())
