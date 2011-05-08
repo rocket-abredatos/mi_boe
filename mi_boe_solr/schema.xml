@@ -33,16 +33,46 @@
 
     <fieldType name="text" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
       <analyzer type="index">
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+		<charFilter class="solr.HTMLStripCharFilterFactory"/>
+		<tokenizer class="solr.StandardTokenizerFactory"/>
+		<filter class="solr.PatternReplaceFilterFactory" pattern="\d*" replacement="" replace="all"/>
+        <filter class="solr.TrimFilterFactory"/>
         <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
         <filter class="solr.LowerCaseFilterFactory"/>
 		<filter class="solr.ISOLatin1AccentFilterFactory"/>
+		<filter class="solr.LengthFilterFactory" min="2" max="100"/>
       </analyzer>
       <analyzer type="query">
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+		<charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+		<filter class="solr.PatternReplaceFilterFactory" pattern="\d*" replacement="" replace="all"/>
+        <filter class="solr.TrimFilterFactory"/>
         <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="0" catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
         <filter class="solr.LowerCaseFilterFactory"/>
 		<filter class="solr.ISOLatin1AccentFilterFactory"/>
+		<filter class="solr.LengthFilterFactory" min="2" max="100"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="textTagCloud" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
+      <analyzer type="index">
+		<charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+		<filter class="solr.PatternReplaceFilterFactory" pattern="\d*" replacement="" replace="all"/>
+        <filter class="solr.TrimFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+		<filter class="solr.LengthFilterFactory" min="3" max="100"/>
+		<filter class="solr.StopFilterFactory" words="boestopwords.txt" ignoreCase="true"/>
+      </analyzer>
+      <analyzer type="query">
+		<charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+		<filter class="solr.PatternReplaceFilterFactory" pattern="\d*" replacement="" replace="all"/>
+        <filter class="solr.TrimFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+		<filter class="solr.LengthFilterFactory" min="3" max="100"/>
+		<filter class="solr.StopFilterFactory" words="boestopwords.txt" ignoreCase="true"/>
+		<filter class="solr.ShingleFilterFactory" maxShingleSize="2" outputUnigrams="true"/>
       </analyzer>
     </fieldType>
  </types>
@@ -61,10 +91,12 @@
    		<field name="paginaFinal" type="int" indexed="true" stored="true" />
    		<field name="paginas" type="int" indexed="true" stored="true" />
    		<field name="texto" type="text" indexed="true" stored="true" required="true"/>
+		<field name="textoTagCloud" type="textTagCloud" indexed="true" stored="true" required="true"/>
    		<field name="fecha" type="date" indexed="true" stored="true"/>
 	</fields>
  
  <uniqueKey>id</uniqueKey>
  <defaultSearchField>texto</defaultSearchField>
  <solrQueryParser defaultOperator="OR"/>
+ <copyField source="texto" dest="textoTagCloud"></copyField>
 </schema>
