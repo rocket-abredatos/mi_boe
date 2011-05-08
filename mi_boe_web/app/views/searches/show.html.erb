@@ -2,6 +2,7 @@
   <div>
     <%= link_to (image_tag("logo_cuadrado_miboe.png", :border=>"0")), root_url %>
   </div>
+  <br/>
   <div>
     <%= parse_facet_fields('seccion', 'section').html_safe %>
     <%= parse_facet_fields('organo', 'organ').html_safe %>
@@ -66,15 +67,7 @@
   </div>
   <div id='pagination'>
     <p>
-      <% if @search.response.numFound > 0 %>
-        <% for i in 0..(@search.response.numFound / 10) %>
-          <% if i == @search.response.start %>
-            <%= (i + 1).to_s %>
-          <% else %>
-            <%= link_to (i + 1).to_s, {:action => "create", :search => {:query => @search.responseHeader.params.q, :start => (i * 10).to_s}}, {:method => 'post'} %>
-          <% end %>
-        <% end %>
-      <% end %>
+      <%= pagination.html_safe %>
     </p>
   </div>
 </div>
