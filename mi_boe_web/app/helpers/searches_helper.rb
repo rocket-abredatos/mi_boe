@@ -14,7 +14,7 @@ module SearchesHelper
   def pagination
     result = ''
     if @search.response.numFound > 0
-      if @search.response.numFound < 20
+      if (@search.response.numFound / 10) < 20
         for i in 0..(@search.response.numFound / 10)
           result += (page_link i) + ' | '
         end
