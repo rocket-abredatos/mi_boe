@@ -1,7 +1,12 @@
 MiBoeWeb::Application.routes.draw do
+
   devise_for :users
 
   resources :searches
+  
+  resources :users do
+    resources :subscriptions    
+  end
 
   get "home/index"
 

@@ -1,0 +1,21 @@
+<%= form_for([current_user,@subscription], :url => (@subscription.new_record? ? user_subscriptions_path(current_user) : user_subscription_path(current_user,@subscription)), :html => { :method => (@subscription.new_record? ? :post : :put) }) do |f| %>
+  <% if @subscription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+
+      <ul>
+      <% @subscription.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :keywords %><br />
+    <%= f.text_field :keywords %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
