@@ -1,9 +1,8 @@
 body { background-color: #fff; color: #333; }
 
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   12px;
-  line-height: 18px;
+li.g, body, html, .std, .c h2, #mbEnd h2, h1, p, ol, ul, td{
+  font-size: small;
+  font-family: arial,sans-serif;
 }
 
 pre {
@@ -11,10 +10,6 @@ pre {
   padding: 10px;
   font-size: 11px;
 }
-
-a { color: #000; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
 
 div.field, div.actions {
   margin-bottom: 10px;
@@ -170,4 +165,146 @@ div#footer {
   font-size: 9.5px;
   color: #606060 ;
   margin-top: 100px;
+}
+
+#ires {
+  padding-top: 1px;
+}
+
+ol, ul, li {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+h1, ol, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+ol {
+  display: block;
+  list-style-type: decimal;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 40px;
+}
+
+li.g {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+ol li {
+  list-style: none;
+}
+
+li {
+  line-height: 1.2;
+}
+
+li {
+  display: list-item;
+}
+
+div.vsc {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+.vspi {
+  bottom: -5px;
+  left: -8px;
+  position: absolute;
+  right: -8px;
+  top: -5px;
+  z-index: -1;
+}
+
+.tl {
+  display: inline-block;
+  position: relative;
+}
+
+.ti, .bl, #res h3 {
+  display: inline;
+}
+
+.r {
+  font-size: medium;
+}
+
+.sl, .r {
+  display: inline;
+  font-weight: normal;
+  margin: 0;
+}
+
+h3, .med {
+  font-size: medium;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  display: block;
+  font-size: 1.17em;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  font-weight: bold;
+}
+
+a:link, .w, .q:active, .q:visited, .tbotu {
+  color: #2200C1;
+  cursor: pointer;
+}
+
+a:link, .w, #prs a:visited, #prs a:active, .q:active, .q:visited {
+  color: #2200C1;
+}
+
+a:-webkit-any-link {
+  color: -webkit-link;
+  text-decoration: underline;
+  cursor: auto;
+}
+
+.s {
+  max-width: 75em;
+}
+
+.gl, .f, .m, .c h2, #mbEnd h2, #tads h2, #tadsto h2, .descbox {
+  color: #767676;
+}
+
+.gl {
+  white-space: nowrap;
+}
+
+.gl, #foot a, .nobr {
+  white-space: nowrap;
+}
+
+a.fl:link, .fl a, .flt, a.flt, .gl a:link, a.mblink, .mblink b {
+  color: #36C;
+}
+
+.osl a, .gl a, #tsf a, a.mblink, a.gl, a.fl, .slk a, .bc a, .flt, a.flt u, .oslk a, #tads .ac a, #rhs .ac a {
+  text-decoration: none;
+}
+
+
+.mft, .a, cite, cite a:link, cite a:visited, .cite, .cite:link, #mbEnd cite b, #tads cite b, #tadsto cite b, #ans > i {
+  color: #0E774A;
+  font-style: normal;
+}
+
+.mft, i, cite, em, var, address {
+  font-style: bold;
 }
