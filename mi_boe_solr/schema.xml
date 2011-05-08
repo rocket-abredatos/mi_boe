@@ -40,7 +40,7 @@
         <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
         <filter class="solr.LowerCaseFilterFactory"/>
 		<filter class="solr.ISOLatin1AccentFilterFactory"/>
-		<filter class="solr.LengthFilterFactory" min="2" max="100"/>
+		<filter class="solr.StopFilterFactory" words="boestopwordsText.txt" ignoreCase="true"/>
       </analyzer>
       <analyzer type="query">
 		<charFilter class="solr.HTMLStripCharFilterFactory"/>
@@ -50,7 +50,7 @@
         <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="0" catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
         <filter class="solr.LowerCaseFilterFactory"/>
 		<filter class="solr.ISOLatin1AccentFilterFactory"/>
-		<filter class="solr.LengthFilterFactory" min="2" max="100"/>
+		<filter class="solr.StopFilterFactory" words="boestopwordsText.txt" ignoreCase="true"/>
       </analyzer>
     </fieldType>
 
