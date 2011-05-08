@@ -1,12 +1,13 @@
 class SubscriptionsController < ApplicationController
   before_filter :authenticate_user!
   check_authorization
+  skip_authorization_check :only => [:index]
   
   # GET /users/:user_id/subscriptions
   # GET /users/:user_id/subscriptions.xml
   def index
     @subscriptions = Subscription.find_all_by_user_id(current_user.id)
-    authorize! :read, @subscriptions.first
+    authorize! :read, @subscriptions.first if @subscriptions.present?
 
     respond_to do |format|
       format.html # index.html.erb
