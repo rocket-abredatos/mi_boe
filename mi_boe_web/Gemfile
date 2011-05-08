@@ -32,3 +32,4 @@ end
 
 gem 'mysql'
 gem 'devise'
+gem 'cancan'

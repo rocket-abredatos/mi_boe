@@ -1,0 +1,25 @@
+<table id="form">
+  <tr>
+    <td>
+      <%= link_to (image_tag("logo_cuadrado_miboe.png", :border=>"0")), root_url %>
+    </td>
+    <td>
+      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+        <%= devise_error_messages! %>
+        <p><%= f.label t('users.forms.email') %><br />
+        <%= f.email_field :email %></p>
+        <p><%= f.label t('users.forms.password')%> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password %></p>
+        <p><%= f.label t('users.forms.password_confirmation') %><br />
+        <%= f.password_field :password_confirmation %></p>
+        <p><%= f.label t('users.forms.current_password') %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.password_field :current_password %></p>
+        <p><%= f.submit t('users.forms.update') %></p>
+      <% end %>
+      <h3><%= t('users.forms.cancel_account') %></h3>
+      <p><%= t('users.forms.unhappy') %> <%= link_to t('users.forms.cancel_account'), registration_path(resource_name), :confirm => t('users.forms.sure'), :method => :delete %>.</p>
+      <p><%= link_to t('back'), :back %></p>
+    </td>
+  </tr>
+</table>

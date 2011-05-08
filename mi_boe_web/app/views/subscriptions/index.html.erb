@@ -1,21 +1,25 @@
-<h1>Listing subscriptions</h1>
-
-<table>
+<table id="subs">
   <tr>
-    <th>Keywords</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @subscriptions.each do |subscription| %>
-  <tr>
-    <td><%= subscription.keywords %></td>
-    <td><%= link_to 'Edit', edit_user_subscription_path(current_user,subscription) %></td>
-    <td><%= link_to 'Destroy', user_subscription_path(current_user,subscription), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+    <td width="30%">
+      <%= link_to (image_tag("logo_cuadrado_miboe.png", :border=>"0")), root_url %>
+    </td>
+    <td width="70%">
+      <h1><%= t('subscriptions.listing')%></h1>
+        <table>
+        <tr>
+          <th>Keywords</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% @subscriptions.each do |subscription| %>
+        <tr>
+          <td><p><%= subscription.keywords %></p></td>
+          <td><p><%= link_to 'Edit', edit_user_subscription_path(current_user,subscription) %></p></td>
+          <td><p><%= link_to 'Destroy', user_subscription_path(current_user,subscription), :confirm => 'Are you sure?', :method => :delete %></p></td>
+        </tr>
+        <% end %>
+      </table>
+      <br />
+      <p><%= link_to 'New Subscription', new_user_subscription_path(current_user) %></p>
+    </td>
 </table>
-
-<br />
-
-<%= link_to 'New Subscription', new_user_subscription_path(current_user) %>

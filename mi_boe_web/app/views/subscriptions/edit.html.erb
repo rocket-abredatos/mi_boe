@@ -1,6 +1,12 @@
-<h1>Editing subscription</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', user_subscription_path(current_user,@subscription) %> |
-<%= link_to 'Back', user_subscriptions_path(current_user) %>
+<table id="form">
+  <tr>
+    <td>
+      <%= link_to (image_tag("logo_cuadrado_miboe.png", :border=>"0")), root_url %>
+    </td>
+    <td>
+      <h1><%= t('subscriptions.editing') %></h1>
+      <%= render 'form' %>
+      <p><%= link_to t('back'), user_subscriptions_path(current_user) %></p>
+    </td>
+  </tr>
+</table>

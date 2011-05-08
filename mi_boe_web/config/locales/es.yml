@@ -1,0 +1,65 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+es:
+  abredatos_challenge: "Desafío AbreDatos 2011"
+  code: "Código"
+  date: "Fecha"
+  first_page: "Primera página"
+  follow_us: "Síguenos en Twitter"      
+  fork_us: "Haznos un fork en Github"
+  helpers:
+    submit:
+      search:
+        create: "Buscar"
+  how_does_it_work:
+    content_1: "Mi BOE ofrece un modo fácil de búsqueda de texto libre sobre documentos del BOE (desde el 1 de Enero de 2011 hasta el día actual). Las nuevas publicaciones del BOE son recolectadas automáticamente por el sistema, proporcionando siempre los últimos datos. Los documentos se devuelven ordenados por fecha desde el más reciente hasta el más antiguo. Y en caso de que varios documentos tengan la misma fecha, el más relevante según la consulta del usuario se mostrará primero."
+    content_2: "Los usuarios registrados pueden definir búsquedas que diariamente se ejecutarán sobre los nuevas publicaciones del BOE. Si se encuentran resultados relevantes, una alerta se envía por correo electrónico."
+    title: "¿Cómo funciona?"
+  last_page: "Última página"
+  no_results: "No se encontraron documentos"
+  organ: "Órgano"
+  pages: "Páginas"
+  rank: "Rango"
+  results_count_1: "Mostrando documentos desde el "
+  results_count_2: " hasta el "
+  results_count_3: " de "
+  section: "Sección"
+  text: "Texto"
+  title: "Título"
+  url: "URL"
+  what_is_it:
+    content: "Mi BOE es un proyecto desarrollado para el <a href='http://www.abredatos.es/' target='_blank'>Desafío AbreDatos 2011</a>. Abredatos es un concurso de 48 horas de duración durante los días 7 y 9 de Mayo para el desarrollo express de servicios para el usuario basados en \'open data\'. Nuestro objetivo es simplificar la búsqueda de información en el BOE y automatizar esta tarea tanto como podamos, además de ofrecer subscripciones personalizadas a alertas sobre el contenido del BOE."
+    title: "¿Qué es?"
+  who_are_we:
+    title: "¿Quiénes somos?"
+  users:
+    edit_account: "Editar cuenta"
+    login: "Acceder"
+    logout: "Desconectar"
+    signup: "Registrarse"
+    forms:
+      email: "E-mail"
+      password: "Contraseña"
+      password_confirmation: "Confirmar contraseña"
+      rememberme: "Recordarme"
+      signin: "Acceder"
+      signup: "Registrarse"
+      forgot_password: "¿Olvidó su contraseña?"
+      no_confirmation: "¿No recivió sus instrucciones de confirmación?"
+      no_unlock: "¿No recivión instrucciones para desbloquear?"
+      current_password: "Contraseña actual"
+      update: "Actualizar"
+      cancel_account: "Cancelar mi cuenta"
+      sure: "¿Está seguro?"
+      logout: "Desconectar"
+      unhappy: "¿No está contento?"
+      edit_account: "Editar cuenta"
+  back: "Volver"
+  show: "Mostrar"
+  subscriptions:
+    one: "Subscripciones"
+    new: "Nueva subscripción"
+    keywords: "Términos de búsqueda"
+    listing: "Mostrando subscripciones"
+    editing: "Editando subscripción"

@@ -1,0 +1,50 @@
+# Additional translations at http://github.com/plataformatec/devise/wiki/I18n
+
+es:
+  errors:
+    messages:
+      expired: "ha expirado, por favor solicite una nueva"
+      not_found: "no encontrado"
+      already_confirmed: "ya ha sido confirmado, por favor trate de conectar"
+      not_locked: "no fue bloqueado"
+      not_saved:
+        one: "1 error evitó que este %{resource} fuera salvado:"
+        other: "%{count} errores evitaron que %{resource} fueran salvados:"
+
+  devise:
+    failure:
+      already_authenticated: 'Ya ha accedido al sistema.'
+      unauthenticated: 'Necesita conectar o registrarse antes de continuar.'
+      unconfirmed: 'Debe confirmar su cuenta antes de continuar.'
+      locked: 'Su cuenta está bloqueda.'
+      invalid: 'E-mail o contraseña incorrectos.'
+      invalid_token: 'Token de autenticación incorrecto.'
+      timeout: 'Su sesión expiró, por favor vuelva a conectar.'
+      inactive: 'Su cuenta no ha sido activada todavía.'
+    sessions:
+      signed_in: 'Conectado satisfactoriamente.'
+      signed_out: 'Desconectado satisfactoriamente.'
+    passwords:
+      send_instructions: 'Recibirá un correo electrónico con instrucciones sobre como reiniciar su contraseña en unos minutos.'
+      updated: 'Su contraseña se ha actualizado correctamente. Ya está conectado.'
+    confirmations:
+      send_instructions: 'Recibirá un correo electrónico con instrucciones sobre como confirmar su cuenta en unos minutos.'
+      confirmed: 'Su cuenta ha sido confirmado. Ya está conectado.'
+    registrations:
+      signed_up: 'Bienvenido! Se ha registrado correctamente.'
+      inactive_signed_up: 'Se ha registrado correctamente. De todas formas, no pudimos conectarle porque su cuenta está %{reason}.'
+      updated: 'Actualizó su cuenta satisfactoriamente.'
+      destroyed: 'Adiós! Su cuenta ha sido eliminada. Esperamos volver a verte pronto.'
+    unlocks:
+      send_instructions: 'Recibirá un correo electrónico con instrucciones sobre como desbloquear su cuenta en unos minutos.'
+      unlocked: 'Su contraseña se ha desbloqueado correctamente. Ya está conectado.'
+    omniauth_callbacks:
+      success: 'Successfully authorized from %{kind} account.'
+      failure: 'Could not authorize you from %{kind} because "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'Instrucciones de confirmación'
+      reset_password_instructions:
+        subject: 'Instrucciones para reiniciar la contraseña'
+      unlock_instructions:
+        subject: 'Instrucciones para desbloquear'
