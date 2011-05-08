@@ -2,8 +2,11 @@ module SearchesHelper
   def parse_facet_fields(category, category_i18n)
     result = '<h3>' + t(category_i18n) + '</h3>'
     attribute = @search.facet_counts.facet_fields.send(category)
+    
     for i in 0..(attribute.count / 2 - 1)
-      result += '<br/> - ' + link_to(attribute[i*2].to_s + ' (' + attribute[i*2 + 1].to_s + ')', {:action => "create", :search => {:query => @search.responseHeader.params.q, :fq => category + ':' + attribute[i*2].to_s}}, {:method => 'post'})
+      search_param = {:query => @search.responseHeader.params.q}
+      search_param[:fq] = (@search.responseHeader.params.fq.present? ? (@search.responseHeader.params.fq + ' AND ') : '') + category + ":\"" + attribute[i*2].to_s + "\"" 
+      result += '<br/> - ' + link_to(attribute[i*2].to_s + ' (' + attribute[i*2 + 1].to_s + ')', {:action => "create", :search => search_param}, {:method => 'post'})
     end
     result + '<br/><br/>'
   end
@@ -41,7 +44,7 @@ module SearchesHelper
        if (i * 10) == @search.response.start
         (i + 1).to_s
       else
-       link_to((i + 1).to_s, {:action => "create", :search => {:query => @search.responseHeader.params.q, :start => (i * 10).to_s}}, {:method => 'post'})
+       link_to((i + 1).to_s, {:action => "create", :search => {:query => @search.responseHeader.params.q, :start => (i * 10).to_s, :fq => (@search.responseHeader.params.fq.present? ? @search.responseHeader.params.fq : '')}}, {:method => 'post'})
       end
     end
 end

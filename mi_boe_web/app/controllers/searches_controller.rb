@@ -8,7 +8,7 @@ class SearchesController < ApplicationController
       :params => {
         :q => (params[:search][:query].present? ? params[:search][:query] : '*:*'),
         :start => (params[:search][:start].present? ? params[:search][:start] : '0'),
-        :fq => (params[:search][:fq].present? ? (params[:search][:fq].split(':')[0] + ":\"" + params[:search][:fq].split(':')[1] + "\"") : ''),
+        :fq => (params[:search][:fq].present? ? params[:search][:fq] : ''),
         :wt => 'json'
       }
     )
