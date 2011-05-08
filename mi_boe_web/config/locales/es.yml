@@ -29,7 +29,7 @@ es:
   title: "Título"
   url: "URL"
   what_is_it:
-    content: "Mi BOE es un proyecto desarrollado para el <a href='http://www.abredatos.es/' target='_blank'>Desafío AbreDatos 2011</a>. Abredatos es un concurso de 48 horas de duración durante los días 7 y 9 de Mayo para el desarrollo express de servicios para el usuario basados en \'open data\'. Nuestro objetivo es simplificar la búsqueda de información en el BOE y automatizar esta tarea tanto como podamos, además de ofrecer subscripciones personalizadas a alertas sobre el contenido del BOE."
+    content: "Mi BOE es un proyecto desarrollado para el <a href='http://www.abredatos.es/' target='_blank'>Desafío AbreDatos 2011</a>. Abredatos es un concurso de 48 horas de duración durante los días 7 y 8 de Mayo para el desarrollo express de servicios para el usuario basados en \'open data\'. Nuestro objetivo es simplificar la búsqueda de información en el BOE y automatizar esta tarea tanto como podamos, además de ofrecer subscripciones personalizadas a alertas sobre el contenido del BOE."
     title: "¿Qué es?"
   who_are_we:
     title: "¿Quiénes somos?"
