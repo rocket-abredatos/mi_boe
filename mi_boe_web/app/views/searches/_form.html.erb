@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_field :query, :value => (@search.responseHeader.present? && (@search.responseHeader.params.q != '*:*')) ? @search.responseHeader.params.q : nil, :size => 200 %>
+    <%= f.text_field :query, :value => (@search.responseHeader.present? && (@search.responseHeader.params.q != '*:*')) ? @search.responseHeader.params.q : nil, :size => 80 %>
   </div>
   <div class="actions">
     <%= f.submit %>

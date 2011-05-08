@@ -33,18 +33,13 @@ en:
     title: "What is it?"
   who_are_we:
     title: "Who are we?"
-  panel:
-    welcome: "Welcome to Mi BOE"
-    subtitle: "Bringing BOE closer to citizens"
-    short_about: ""
-    not_a_member: "Not a member yet? Sign Up!"
-    member_login: "Member Login"
-    register_message: "Not a member yet? Sign Up!"
-    username: "E-mail"
-    password: "Password"
-    password_confirmation: "Confirm password"
-    button_register: "Register"
-    remember_me: "Remember me"
-    hello_gues: "Hello Guest!"
-    open: "Login | Register"
-    close: "Close panel"
+  users:
+    edit_account: "Edit account"
+    login: "Login"
+    logout: "logout"
+    signup: "Sign up"
+    forms:
+      email: "E-mail"
+      password: "Password"
+      rememberme: "Remember me"
+      signin: "Sign in"
