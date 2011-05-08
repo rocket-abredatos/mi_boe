@@ -1,5 +1,6 @@
+from settings import dbhost,dbuser,dbpass,solrurl,path,mailuser,mailpass
 import sys
-sys.path.append('/home/opendata/alertSystem/install/MySQL-python-1.2.3/build/lib.linux-x86_64-2.7/')
+sys.path.append(path)
 
 import os
 import MySQLdb
@@ -7,66 +8,72 @@ import commands
 import subprocess
 import re
 import urllib2
+import smtplib
 
-mailFields={'titulo':1}
+
+arrayFields=['titulo','urlPDF']
 
 def sendmail(result, mail):
-    print "sending " + result + " a la dir " + mail
-    os.system('python mailSender.py '+ mail + '\'' + result.encode('utf-8') + '\'')
+    fromaddr = 'miboe.notifications@gmail.com'
+    toaddrs  = mail
+    msg = result.encode('utf-8')
+
+    username = mailuser
+    password = mailpass
+
+    server = smtplib.SMTP('smtp.gmail.com:587')
+    server.starttls()
+    server.login(username,password)
+    server.sendmail(fromaddr, toaddrs, msg)
+    server.quit()
 
 
 def querySolrHttp(kws, date):
-        date='2011-05-05'
-        query='http://188.40.66.148:8090/solr/select/?q=' + kws + '+AND+fecha:['+ date +'T00:00:00Z+TO+'+ date +'T00:00:00Z]' + '&version=2.2&start=0&rows=2&indent=on&wt=python&fl=id,titulo'
-        print query
+        query=solrurl + str(kws) + '+AND+fecha:['+ str(date) +'T00:00:00Z+TO+'+ str(date) +'T00:00:00Z]' + '&version=2.2&start=0&rows=50&indent=on&wt=python&fl=id,titulo,url,urlPDF'
         o= urllib2.urlopen(query)
         r = eval(o.read())
         return r
 
 def getDate():
     date = commands.getoutput("date --rfc-3339=date")
-    print date
     return date
 
-def createMail(result):
+def createMail(result,kws):
     mensaje=""
     for entry in result['response']['docs']:
-	mensaje=mensaje+"\nRESULTADO"
-	for field in entry:
-	    if(field in mailFields):
-	        print "FIELD"
-	        print field
-	        mensaje = mensaje + "\n\t*" + entry[field] 
-	    else:
-		print "DESCARTO"
-		print field
-		if(field==id):
-		    id=entry[field]
-		    if(result['highlighting'][id]!=None):
-			hl = result['highlighting'][id]
-			mensaje=mensaje + "\n\t*" + hl
-    print "mensaje"
-    print mensaje
+	mensaje=mensaje+"\n\nResultado para la alerta \""+kws+"\"\n"
+	for field in arrayFields:
+            mensaje = mensaje + "\n\t*" + entry[field]
     return mensaje
 
 
-db=MySQLdb.connect(host="localhost",user="miboe",passwd="miboe10pp",db="miboe")
+db=MySQLdb.connect(host=dbhost,user=dbuser,passwd=dbpass,db="abredatos")
 
-c=db.cursor()
-c.execute("""SELECT * from alertas""")
+users = db.cursor()
 
-data = c.fetchone()
+users.execute("""SELECT id,email from users""")
 
-while(data!=None):
-    kws = data[1]
-    mail = data[2]
-    date = getDate()
-    result = querySolrHttp(kws, date)
-    if(result['response']['numFound']==0):
-	print "ERROR"
-    else:
-	mensaje=createMail(result)
-        for field in result:
-	    print field
-	sendmail(mensaje,mail)
-    data=c.fetchone()
+user=users.fetchone()
+
+while(user!=None):
+    
+    c=db.cursor()
+    c.execute("""SELECT * from subscriptions WHERE user_id=""" + str(user[0]))
+
+    mail=user[1]
+    mensaje=""
+
+    data = c.fetchone()
+    while(data!=None):
+    	kws = data[2]
+    	date = getDate()
+    	result = querySolrHttp(kws, date)
+    	if(result['response']['numFound']==0):
+            print "ERROR"
+    	else:
+            mensaje=mensaje + "\n\n########################################\n\n" + createMail(result,kws)
+        data=c.fetchone()
+
+    sendmail(mensaje,mail)
+
+    user=users.fetchone()
