@@ -1,14 +1,21 @@
-<div align="center">
-  <h2>Sign in</h2>
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <p><%= f.label :email %><br />
-    <%= f.email_field :email %></p>
-    <p><%= f.label :password %><br />
-    <%= f.password_field :password %></p>
-    <% if devise_mapping.rememberable? -%>
-      <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-    <% end -%>
-    <p><%= f.submit "Sign in" %></p>
-  <% end %>
-  <%= render :partial => "devise/shared/links" %>
-</div>
+<table id="form">
+  <tr>
+    <td>
+      <%= link_to (image_tag("logo_cuadrado_miboe.png", :border=>"0")), root_url %>
+    </td>
+    <td>
+      <h2><%= t('users.forms.signin') %></h2>
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <p><%= f.label t('users.forms.email') %><br />
+        <%= f.email_field :email %></p>
+        <p><%= f.label t('users.forms.password') %><br />
+        <%= f.password_field :password %></p>
+        <% if devise_mapping.rememberable? -%>
+          <p><%= f.check_box :remember_me %> <%= f.label t('users.forms.rememberme') %></p>
+        <% end -%>
+        <p><%= f.submit t('users.forms.signin') %></p>
+      <% end %>
+      <%= render :partial => "devise/shared/links" %>
+    </td>
+  </tr>
+</table>

@@ -27,9 +27,9 @@
         <div id="gbar">
           <nobr>
             <% if user_signed_in? %>
-              <%= link_to('Edit account', edit_user_registration_path, :class=>"gb1") %> <%= link_to('Logout', destroy_user_session_path, :class=>"gb1") %>
+              <%= link_to(t('users.forms.edit_account'), edit_user_registration_path, :class=>"gb1") %> <%= link_to(t('subscriptions.one'), user_subscriptions_path(current_user), :class=>"gb1")  %> <%= link_to(t('users.forms.logout'), destroy_user_session_path, :class=>"gb1") %>
             <% else %>
-              <%= link_to('Login', new_user_session_path, :class=>"gb1")  %> <%= link_to('Sign up', new_user_registration_path, :class=>"gb1")  %>
+              <%= link_to(t('users.forms.signin'), new_user_session_path, :class=>"gb1")  %> <%= link_to(t('users.forms.signup'), new_user_registration_path, :class=>"gb1")  %>
             <% end %>
           </nobr>
         </div>

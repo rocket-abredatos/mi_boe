@@ -1,5 +1,14 @@
-<h1>New subscription</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', user_subscriptions_path(current_user) %>
+<table id="form">
+  <tr>
+    <td>
+      <%= link_to (image_tag("logo_cuadrado_miboe.png", :border=>"0")), root_url %>
+    </td>
+    <td>
+      <h1><%= t('subscriptions.new')%></h1>
+      <p>
+      <%= render 'form' %>
+      </p>
+      <p><%= link_to t('back'), user_subscriptions_path(current_user) %></p>
+    </td>
+  </tr>
+</table>
