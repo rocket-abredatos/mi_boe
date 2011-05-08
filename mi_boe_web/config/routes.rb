@@ -1,4 +1,6 @@
 MiBoeWeb::Application.routes.draw do
+  devise_for :users
+
   resources :searches
 
   get "home/index"

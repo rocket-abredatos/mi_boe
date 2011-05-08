@@ -2,8 +2,10 @@
 db/*.sqlite3
 log/*.log
 tmp/
-config/database.yml
 .project
+config/database.yml
 config/initializers/secret_token.rb
+config/initializers/devise.rb
+config/initializers/mail_conf.rb
 *.tmp*
 
