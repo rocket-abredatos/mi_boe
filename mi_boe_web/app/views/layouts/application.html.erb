@@ -22,17 +22,21 @@
     </script>
   </head>
   <body>
+    <div id="mngb">
+      <div id="gog">
+        <div id="gbar">
+          <nobr>
+            <% if user_signed_in? %>
+              <%= link_to('Edit account', edit_user_registration_path, :class=>"gb1") %> <%= link_to('Logout', destroy_user_session_path, :class=>"gb1") %>
+            <% else %>
+              <%= link_to('Login', new_user_session_path, :class=>"gb1")  %> <%= link_to('Sign up', new_user_registration_path, :class=>"gb1")  %>
+            <% end %>
+          </nobr>
+        </div>
+      </div>
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
-    <% if user_signed_in? %>
-      <li><%= link_to('Edit account', edit_user_registration_path) %></li>
-      <li><%= link_to('Logout', destroy_user_session_path) %></li>
-    <% else %>
-      <li><%= link_to('Login', new_user_session_path)  %></li>
-      <li><%= link_to('Sign up', new_user_registration_path)  %></li>
-    <% end %>
-
     <div id='wrapper'>
       <%= yield %>
       <div id='footer'>

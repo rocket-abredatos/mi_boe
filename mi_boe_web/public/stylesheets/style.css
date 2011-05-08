@@ -322,3 +322,32 @@ table#tableAbout {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+a.gb1, a.gb4 {
+  text-decoration: underline;
+}
+
+a.gb1, a.gb2, a.gb3, a.gb4 {
+  color: #00C !important;
+}
+
+a.gb1, a.gb4 {
+  text-decoration: underline !important;
+}
+
+a.gb1, a.gb2, a.gb3, a.gb4 {
+  color: #11C !important;
+}
+
+.gb1, .gb3 {
+  zoom: 1;
+}
+
+.gb1 {
+  margin-right: .5em;
+}
+
+a {
+  color: #11C;
+  text-decoration: none;
+}
