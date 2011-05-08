@@ -40,9 +40,21 @@
     <div id='wrapper'>
       <%= yield %>
       <div id='footer'>
-        <%= link_to t('fork_us'), "https://github.com/rocket-abredatos/mi_boe" %> - 
-        <%= link_to t('follow_us'), "http://twitter.com/#!/mi_boe" %> - 
-        <%= link_to t('abredatos_challenge'), "http://www.abredatos.es" %>
+        <%= link_to t('fork_us'), 'https://github.com/rocket-abredatos/mi_boe' %> - 
+        <%= link_to t('follow_us'), 'http://twitter.com/#!/mi_boe' %> - 
+        <%= link_to t('abredatos_challenge'), 'http://www.abredatos.es' %>
+        <br/>
+        <br/>
+        <%= 'Powered by:' %>
+        <br/>
+        <%= link_to 'Ruby on Rails', 'http://rubyonrails.org' %> -
+        <%= link_to 'Perl', 'http://www.perl.org' %> -
+        <%= link_to 'Python', 'http://www.python.org' %> -
+        <%= link_to 'Apache Solr', 'http://lucene.apache.org/solr' %> -
+        <%= link_to 'Phusion Passenger', 'http://www.modrails.com' %> -
+        <%= link_to 'Apache HTTP Server', 'http://httpd.apache.org' %> -
+        <%= link_to 'MySQL', 'http://www.mysql.com' %> -
+        <%= link_to 'Ubuntu', 'http://www.ubuntu.com' %>
       </div>
     </div>
   </body>
