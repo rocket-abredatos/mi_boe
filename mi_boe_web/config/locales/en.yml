@@ -63,3 +63,5 @@ en:
     keywords: "Keywords"
     listing: "Listing subscriptions"
     editing: "Editing subscription"
+  edit: "Edit"
+  destroy: "Destroy"

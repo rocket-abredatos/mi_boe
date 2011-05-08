@@ -63,3 +63,6 @@ es:
     keywords: "Términos de búsqueda"
     listing: "Mostrando subscripciones"
     editing: "Editando subscripción"
+  edit: "Editar"
+  destroy: "Eliminar"    
+ 

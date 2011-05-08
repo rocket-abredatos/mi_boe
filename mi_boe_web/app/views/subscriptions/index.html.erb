@@ -14,12 +14,12 @@
         <% @subscriptions.each do |subscription| %>
         <tr>
           <td><p><%= subscription.keywords %></p></td>
-          <td><p><%= link_to 'Edit', edit_user_subscription_path(current_user,subscription) %></p></td>
-          <td><p><%= link_to 'Destroy', user_subscription_path(current_user,subscription), :confirm => 'Are you sure?', :method => :delete %></p></td>
+          <td><p><%= link_to t('edit'), edit_user_subscription_path(current_user,subscription) %></p></td>
+          <td><p><%= link_to t('destroy'), user_subscription_path(current_user,subscription), :confirm => t('users.forms.sure'), :method => :delete %></p></td>
         </tr>
         <% end %>
       </table>
       <br />
-      <p><%= link_to 'New Subscription', new_user_subscription_path(current_user) %></p>
+      <p><%= link_to t('subscriptions.new'), new_user_subscription_path(current_user) %></p>
     </td>
 </table>
