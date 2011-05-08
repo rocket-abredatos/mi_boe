@@ -20,7 +20,7 @@ en:
   no_results: "No documents found"
   organ: "Organ"
   pages: "Pages"
-  rank: "Rank"
+  rank: "Range"
   results_count_1: "Showing documents from "
   results_count_2: " to "
   results_count_3: " out of "
@@ -36,7 +36,7 @@ en:
   users:
     edit_account: "Edit account"
     login: "Login"
-    logout: "logout"
+    logout: "Logout"
     signup: "Sign up"
     forms:
       email: "E-mail"
