@@ -113,7 +113,7 @@
 		<str name="wt">xml</str>
 		<str name="qf">texto^1 titulo^10.0</str>
 		<str name="sort">fecha desc</str>
-		<str name="fl">id,url,urlPDF,seccion,organo,rango,titulo,codigo,paginaInicial,paginaFinal,paginas,fecha</str>
+		<str name="fl">id,url,urlPDF,seccion,organo,rango,titulo,codigo,paginaInicial,paginaFinal,paginas,fecha,textoSnippet</str>
 		
 		<!-- Highlight -->
 		<str name="hl">on</str>

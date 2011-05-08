@@ -92,6 +92,7 @@
    		<field name="paginas" type="int" indexed="true" stored="true" />
    		<field name="texto" type="text" indexed="true" stored="true" required="true"/>
 		<field name="textoTagCloud" type="textTagCloud" indexed="true" stored="true" required="true"/>
+		<field name="textoSnippet" type="string" indexed="false" stored="true" required="true"/>
    		<field name="fecha" type="date" indexed="true" stored="true"/>
 	</fields>
  
@@ -99,4 +100,5 @@
  <defaultSearchField>texto</defaultSearchField>
  <solrQueryParser defaultOperator="OR"/>
  <copyField source="texto" dest="textoTagCloud"></copyField>
+ <copyField source="texto" dest="textoSnippet" maxChars="220"></copyField>
 </schema>
